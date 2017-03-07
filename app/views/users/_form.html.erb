@@ -1,4 +1,11 @@
-<%= form_for(@user, url: yield(:url)) do |f| %>
+<%
+  options = {}
+  if yield(:url) != ''
+    options = {url: yield(:url)}
+  end
+%>
+
+<%= form_for(@user, options) do |f| %>
     <%= render 'shared/error_messages', object: @user %>
 
     <%= f.label :name %>
